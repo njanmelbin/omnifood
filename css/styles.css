@@ -7,7 +7,7 @@
 	box-sizing: border-box;
 }
 
-html{
+html,body{
 	background-color: #fff;
 	color : #555;
 	font-family: 'Lato','Arial',sans-seriff;
@@ -28,7 +28,7 @@ html{
 /*REUSABLE COMPONENTS*/
 
 .row{
-	width: 1140px;
+	max-width: 1140px;
 	margin: 0 auto;
 }
 
@@ -38,6 +38,7 @@ section{
 
 /*----------headings------------*/
 header{
+	background-image: -webkit-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)) ,url('img/hero.jpg');
 	background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)) ,url('img/hero.jpg');
 	background-size: cover;
 	background-position: center;
@@ -54,7 +55,9 @@ header{
 	width :1140px;
 	top:50%;
 	left:50%;
-	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
 }
 
 h1,h2,h3{
@@ -118,6 +121,7 @@ a:active{
 	color: #fff;
 	border-radius: 200px;
 	font-size: 75%;
+	-webkit-transition : background-color 0.2s,border 0.2s,color 0.2s;
 	transition : background-color 0.2s,border 0.2s,color 0.2s;
 }
 
@@ -146,19 +150,53 @@ a:active{
 	height: 100px;
 	width:auto;
 	margin-top: 10px;
+	float:left;
 }
 
-/*navbar*/
+.logo-black{
+	display:none;
+	height:50px;
+	width:auto;
+	margin-top:5px;
+	float:left;
+}
+/*------------------------------navbar-----------------------------*/
+
+
+/*sticky */
+.sticky{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	background-color: rgba(255,255,255,0.98);
+	box-shadow: 0 2px 2px #efefef;
+	z-index: 9999;
+}
+
+.sticky .main-nav{
+margin-top:15px;
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited{
+	color:#555;
+}
+
+.sticky .logo{
+	display:none;
+}
+.sticky .logo-black{
+	display : inline-block;
+}
 .main-nav {
 	float : right;
 	list-style:none;
-	float:right;
 	margin-top:40px;
 }
 
 .main-nav li {
 	display : inline-block;
-	float: left;
 	margin-right: 30px;
 }
 
@@ -189,6 +227,19 @@ a:active{
 	font-size: 90%;
 	line-height: 145%;
 }
+
+.mobile-nav-icon{
+	float:right;
+	margin-top:30px;
+	cursor:pointer;
+	display:none;
+}
+
+.mobile-nav-icon i{
+	font-size:200%;
+	color:#fff;
+}
+
 
 /*icons*/
 
@@ -231,13 +282,20 @@ a:active{
 	opacity: 0.7;
 	width:100%;
 	height:auto;
-	transform: scale(1.15);
-	transition: transform 0.5s;
+	-webkit-transform: scale(1.15);
+	    -ms-transform: scale(1.15);
+	        transform: scale(1.15);
+	-webkit-transition : -webkit-transform 0.5s;
+	transition : -webkit-transform 0.5s;
+	transition : transform 0.5s;
+	transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 .meals-photo img:hover{
 	opacity:1;
-	transform: scale(1.03);
+	-webkit-transform: scale(1.03);
+	    -ms-transform: scale(1.03);
+	        transform: scale(1.03);
 }
 
 /*steps section*/
@@ -245,8 +303,17 @@ a:active{
 	background-color: #f4f4f4;
 }
 
+.steps-box:firt-child{
+	text-align:right;
+	padding-right: 3%;
+}
+
+.steps-box:last-child{
+	text-align: left;
+	padding-left:3%;
+}
+
 .app-screen{
-	float: right;
 	width: 40%;
 }
 
@@ -255,8 +322,8 @@ a:active{
 }
 
 .works-step div{
+	float:left;
 	display: inline-block;
-	float: left;
 	border : 2px solid #e67e22;
 	border-radius: 50%;
 	height:50px;
@@ -301,7 +368,8 @@ a:active{
 
  footer{
  	background-color: #555;
- 	padding:60px 0;
+    padding :50px;
+ 	font-size: 90%;
  }
 
  .footer-nav{
@@ -364,5 +432,5 @@ a:active{
  	margin-top:20px;
  	color: #888;
  	text-align: center;
- 	font-style: 90%;
+ 	font-size: 90%;
  }
